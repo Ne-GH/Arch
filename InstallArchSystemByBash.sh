@@ -19,14 +19,12 @@ DISK(){
     mkdir -p /mnt/boot/efi
     mount "$DEVDISK$TWO" /mnt
     mount "$DEVDISK$ONE" /mnt/boot/efi
-
-
 }
-STARTINSTALL(){
+ChrootFront(){
     DISK
 
+    yes | pacman -S archlinux-keyring
     echo -en "\n\n\n\n\n\n\n\n\n\n\n" | pacstrap -i /mnt base base-devel linux linux-firmware
-
 
     genfstab -U -p /mnt > /mnt/etc/fstab
     
@@ -34,11 +32,20 @@ STARTINSTALL(){
 
     echo "Chroot done...."
 
-
-    
-
+}
+ChrootBehind(){
 
 }
+STARTINSTALL(){
+
+    if[ $# -lt 3 ] ; then
+        ChrootBehind
+    else
+        ChrootBehind
+    fi
+
+}
+
 
 NOSTART(){
     echo "Bye"
