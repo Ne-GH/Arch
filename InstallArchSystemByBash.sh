@@ -1,3 +1,10 @@
+END(){
+    umount /mnt/boot/efi
+    ummount /mnt
+    reboot
+
+}
+
 DISK(){
     ONE="1"
     TWO="2"
@@ -31,10 +38,42 @@ ChrootFront(){
     arch-chroot /mnt
 
     echo "Chroot done...."
-
+    END
 }
 ChrootBehind(){
-
+	echo "LANG=en_US.UTF-8" > /etc/locale.conf
+	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+	echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
+	echo "zh_CN.GBK GBK" >> /etc/locale.gen
+    echo "zh_CN GB2312" >> /etc/locale.gen
+    locale-gen
+    
+    
+    
+    rm -f /etc/localtime
+    ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    hwclock --systohc --localtime
+    
+    # hostname
+    echo Arch > /etc/hostname
+    
+    
+    # rootpass
+    echo "archroot" | passwd
+   
+    # BIOS/RBM
+    yes | pacman -Sy os-prober ntfs-3g
+    yes | pacman -Sy grub
+    grub-install --target=i386-pc $DEVDISK
+    grub-mkconfig -o /boot/grub/grub.cfg
+    
+    # EFI/GPT
+    yes | pacman -S grub efibootmgr
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+    grub-mkconfig -o /boot/grub/grub.cfg
+    
+    exit
+    
 }
 STARTINSTALL(){
 
