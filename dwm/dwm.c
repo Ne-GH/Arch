@@ -1461,7 +1461,7 @@ run(void)
 
 void
 runAutostart(void) {
-	system("cd ~/git_arch/dwm/sh;bash dwm-start.sh &");
+	system("cd ~/.dwm/sh;bash dwm-start.sh &");
 }
 
 void
