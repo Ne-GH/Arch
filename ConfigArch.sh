@@ -4,7 +4,7 @@ YES(){
     yes "
     y"
 }
-YES | sudo pacman -Syu
+YES | sudo pacman -Syy
 
 YES | sudo pacman -S neovim
 
@@ -25,22 +25,21 @@ YES | pacman -S xorg xorg-xinit xorg-server
 # pacman -S server
 
 # install pkgfile command
-YES | pacman -S pkgfile
+# YES | pacman -S pkgfile
 
 # install firefox and Chinese package
-YES | sudo pacman -S firefox firefox-i18n-zh-cn
+# YES | sudo pacman -S firefox firefox-i18n-zh-cn
 
 
 # install dwm
-# should copy dwm source code
 cd dwm
 sudo make clean install
 cd ..
+
 # install acpi to inquire power information
 YES | pacman -S acpi
 
 # install st
-# should copy st source st
 cd st
 sudo make clean install
 cd ..
@@ -49,36 +48,31 @@ cd ..
 # let terminal use Chinese
 # in .xinitrc add set
 
+echo -e "export LANG=zh_CN.utf-8" >> ~/.xinitrc
+echo -e "export LANGUAGE=zh_CN:en_US" >> ~/.xinitrc
+
 echo "# 分辨率" >> ~/.xinitrc
 echo -e "xrandr --newmode \"1920x1080_60\" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync" >> ~/.xinitrc
 echo -e "xrandr --addmode Virtual-1 \"1920x1080_60\"" >> ~/.xinitrc
 echo -e "xrandr --output Virtual-1 --mode \"1920x1080_60\"" >> ~/.xinitrc
 
-echo -e "export LANG=zh_CN.utf-8" >> ~/.xinitrc
-echo -e "export LANGUAGE=zh_CN:en_US" >> ~/.xinitrc
 
 # install Chinese font
-YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
+# YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
 # download path is /usr/share/fonts
 # maybe no need this command and I think this command is invalid  `sudo setfonts wqy_microhei.ttc`
 
 # install unzip
-YES | sudo pacman -S unzip
+# YES | sudo pacman -S unzip
 
 # install git
-YES | sudo pacman -S git
+# YES | sudo pacman -S git
 
 # install v2ray
 YES | sudo pacman -S v2ray
-# install v2raya
-# in AUR Wiki inquire v2raya URL
 git clone https://aur.archlinux.org/v2raya-bin.git
-ls
-sleep 10s
 cd v2raya-bin
-# in this folder
 makepkg -si
-# run v2raya
 systemctl enable --now v2raya.service
 cd ..
 
@@ -104,20 +98,13 @@ echo "export GTK_IM_MODULE=fictx5" >> ~/.xinitrc
 echo "export QT_IM_MODULE=fcitx5" >> ~/.xinitrc
 echo "export XMODIFIERS=@im=fcitx5" >> ~/.xinitrc
 echo "fcitx5 &" >> ~/.xinitrc
-# modify fcitx5 fonts size
-# .config/fcitx5/conf/classicui.conf 
-# modify -> font="fontname fontsize"
 
-# install fcitx5 theme
-# pacman -S fcitx5-nord
-# download file in /usr/share/fcitx5/themes/
-# fcitx5-configtool
 
 # install compton
 YES | sudo pacman -S compton
 
 # Editor ~/.config/compton/compton.conf
-	# 其他窗口不透明度,较高时壁纸更清晰,
+# 其他窗口不透明度,较高时壁纸更清晰,
 echo -en "
 inactive-opacity = 0.95;
 # 当前聚焦窗口
