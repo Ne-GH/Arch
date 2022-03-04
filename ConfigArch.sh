@@ -147,7 +147,9 @@ cd xwinwrap-git
 echo -en "\n\n\n\n"
 echo "# xwinwrap" >> ~/.xinitrc
 echo "xwinwrap -fs -nf -ov -- mplayer -af volume=-200 -fps 24 -shuffle -loop 0 -wid WID -nolirc ~/wallpaper/bg.mp4 &" >> ~/.xinitrc
+echo "exec dwm " >> ~/.xinitrc
 cd ..
+
 # modify nvim theme
 # Editor ~/.config/nvim/init.vim
 # get file by copy
