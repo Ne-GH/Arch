@@ -72,7 +72,9 @@ YES | sudo pacman -S git
 YES | sudo pacman -S v2ray
 # install v2raya
 # in AUR Wiki inquire v2raya URL
-git clone https://aur.archlinux.org/v2raya-bin/git
+git clone https://aur.archlinux.org/v2raya-bin.git
+ls
+sleep 10s
 cd v2raya-bin
 # in this folder
 makepkg -si
