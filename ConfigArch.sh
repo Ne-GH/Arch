@@ -29,8 +29,8 @@ write_xinitrc(){
     
     echo -en "\n\n\n\n" >> ~/.xinitrc
     echo "# xwinwrap"   >> ~/.xinitrc
-    echo "xwinwrap -fs -nf -ov -- mplayer -af volume=-200 -fps 24 -shuffle -loop 0 -wid WID -nolirc ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
-    
+    echo "# xwinwrap -fs -nf -ov -- mplayer -af volume=-200 -fps 24 -shuffle -loop 0 -wid WID -nolirc ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
+    echo "xwinwrap -fs -nf -ov -- mpv -wid WID --fps=59 --no-audio --loop --no-osc --no-osd-bar --input-vo-keyboard=no --really-quiet ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
     
 
 
@@ -98,8 +98,8 @@ cd ..
 YES | sudo pacman -S compton
 
 
-# install mplayer
-YES |sudo pacman -S mplayer
+# install mplayer / mpv
+YES |sudo pacman -S mpv
 
 # install wallpaper player xwinwrap
 git clone https://aur.archlinux.org/xwinwrap-git.git
@@ -147,5 +147,5 @@ mkdir ~/.wallpaper
 cp bg.mp4 ~/.wallpaper
 mkdir -p ~/.config/nvim
 cp init.vim ~/.config/nvim
-mkdir -p ~/.local/share/nvim/site
-cp plug.vim ~/.local/share/nvim/site
+mkdir -p ~/.local/share/nvim/site/autoload
+cp plug.vim ~/.local/share/nvim/site/autoload
