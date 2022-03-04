@@ -59,6 +59,9 @@ ChrootBehind(){
     # rootpass
     echo root:archroot | chpasswd
    
+    # enable dhcpcd
+    systemctl enable dhcpcd
+    
     # BIOS/RBM
     yes | pacman -Sy grub
     grub-install --target=i386-pc $DEVDISK
