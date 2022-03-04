@@ -32,7 +32,7 @@ ChrootFront(){
     arch-chroot /mnt bash install ChrootBehind
 
 
-    umount /mnt/boot/efi
+    # umount /mnt/boot/efi
     ummount /mnt
     reboot
 }
@@ -57,7 +57,7 @@ ChrootBehind(){
     
     
     # rootpass
-    echo root:archroot | passwd
+    echo root:archroot | chpasswd
    
     # BIOS/RBM
     yes | pacman -Sy grub
