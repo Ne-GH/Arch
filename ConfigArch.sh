@@ -49,7 +49,7 @@ cd ..
 # let terminal use Chinese
 # in .xinitrc add set
 
-echo "# 分辨率"
+echo "# 分辨率" >> ~/.xinitrc
 echo -e "xrandr --newmode \"1920x1080_60\" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync" >> ~/.xinitrc
 echo -e "xrandr --addmode Virtual-1 \"1920x1080_60\"" >> ~/.xinitrc
 echo -e "xrandr --output Virtual-1 --mode \"1920x1080_60\"" >> ~/.xinitrc
