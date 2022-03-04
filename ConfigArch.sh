@@ -2,6 +2,9 @@
 
 
 yes | sudo pacman -Syu
+
+yes | sudo pacman -S neovim
+
 # setfont
 # use command setfont to set font
 # My arch default fonts in /usr/share/kbd/consolefonts
@@ -27,24 +30,29 @@ yes | sudo pacman -S firefox firefox-i18n-zh-cn
 
 # install dwm
 # should copy dwm source code
+cd dwm
 sudo make clean install
+cd ..
 # install acpi to inquire power information
 yes | pacman -S acpi
 
 # install st
 # should copy st source st
+cd st
 sudo make clean install
+cd ..
+
 
 # let terminal use Chinese
 # in .xinitrc add set
 
 echo "# 分辨率"
-echo -en "xrandr --newmode \"1920x1080_60\" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync"
-echo -en "xrandr --addmode Virtual-1 \"1920x1080_60\""
-echo -en "xrandr --output Virtual-1 --mode \"1920x1080_60\""
+echo -e "xrandr --newmode \"1920x1080_60\" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync" >> ~/.xinitrc
+echo -e "xrandr --addmode Virtual-1 \"1920x1080_60\"" >> ~/.xinitrc
+echo -e "xrandr --output Virtual-1 --mode \"1920x1080_60\"" >> ~/.xinitrc
 
-# echo -en "export LANG=zh_CN.utf-8" >> .xinitrc
-# echo -en "export LANGUAGE=zh_CN:en_US" >> .xinitrc
+# echo -e "export LANG=zh_CN.utf-8" >> ~/.xinitrc
+# echo -e "export LANGUAGE=zh_CN:en_US" >> ~/.xinitrc
 
 # install Chinese font
 yes | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
@@ -62,11 +70,12 @@ yes | sudo pacman -S v2ray
 # install v2raya
 # in AUR Wiki inquire v2raya URL
 git clone https://aur.archlinux.org/v2raya-bin/git
+cd v2raya-bin
 # in this folder
 makepkg -si
 # run v2raya
 systemctl enable --now v2raya.service
-
+cd ..
 
 # install Shell
 # fish
@@ -84,12 +93,12 @@ systemctl enable --now v2raya.service
 yes | sudo pacman -S fcitx5-im fcitx5-chinese-addons
 # write this word in .xinitrc
 
-echo -en "\n\n\n\n"
-echo "# fcitx5"
-echo "export GTK_IM_MODULE=fictx5"
-echo "export QT_IM_MODULE=fcitx5"
-echo "export XMODIFIERS=@im=fcitx5"
-echo "fcitx5 &"
+echo -en "\n\n\n\n" >> ~/.xinitrc
+echo "# fcitx5" >> ~/.xinitrc
+echo "export GTK_IM_MODULE=fictx5" >> ~/.xinitrc
+echo "export QT_IM_MODULE=fcitx5" >> ~/.xinitrc
+echo "export XMODIFIERS=@im=fcitx5" >> ~/.xinitrc
+echo "fcitx5 &" >> ~/.xinitrc
 # modify fcitx5 fonts size
 # .config/fcitx5/conf/classicui.conf 
 # modify -> font="fontname fontsize"
@@ -126,16 +135,16 @@ fade-out-step = 0.05;
 fade-exclude = [ ];" > ~/.config/compton/compton.conf
 
 
-echo -en "\n\n"
-
-echo "# compton"
-echo "compton -b &"
+echo -en "\n\n" >> ~/.xinitrc
+echo "# compton" >> ~/.xinitrc
+echo "compton -b &" >> ~/.xinitrc
 
 # install mplayer
 yes |sudo pacman -S mplayer
 
 # install wallpaper player xwinwrap
 git clone https://aur.archlinux.org/xwinwrap-git.git
+cd xwinwrap-git
 # need cp wxinwrap source code
 # sudo make clean install
 # use AUR install
@@ -144,9 +153,9 @@ git clone https://aur.archlinux.org/xwinwrap-git.git
 # Modify .xinitrc add this word
 	# xwinwrap -fs -nf -ov -- mpv -wid WID --fps=59 --no-audio --loop --no-osc --no-osd-bar --input-vo-keyboard=no --really-quiet ~/wallpaper/bg.mp4 &
 echo -en "\n\n\n\n"
-echo "# xwinwrap"
-echo "xwinwrap -fs -nf -ov -- mplayer -af volume=-200 -fps 24 -shuffle -loop 0 -wid WID -nolirc ~/wallpaper/bg.mp4 &"
-
+echo "# xwinwrap" >> ~/.xinitrc
+echo "xwinwrap -fs -nf -ov -- mplayer -af volume=-200 -fps 24 -shuffle -loop 0 -wid WID -nolirc ~/wallpaper/bg.mp4 &" >> ~/.xinitrc
+cd ..
 # modify nvim theme
 # Editor ~/.config/nvim/init.vim
 # get file by copy
@@ -166,7 +175,7 @@ yes | sudo pacman -S nodejs npm
 
 # install coc-python depend
 yes | pacman S python-pylint jedi-language-server
-CocInstall coc-python
+# CocInstall coc-python
 # if write python file have errer,please try update coc coc-plug vim-plug
 
 
