@@ -3,9 +3,9 @@
 YES(){
     yes ""
 }
-YES | sudo pacman -Syu
+YES | sudo pacman -Syy
 
-# YES | sudo pacman -S neovim
+YES | sudo pacman -S neovim
 
 YES | sudo pacman -S nvidia
 
