@@ -143,9 +143,9 @@ YES | pacman S python-pylint jedi-language-server
 # write this word in .xinitrc
 
 
-echo -en "\n\n\n\n" >> ~/.xinitrc
-echo "# fcitx5" >> ~/.xinitrc
-echo "export GTK_IM_MODULE=fictx5" >> ~/.xinitrc
-echo "export QT_IM_MODULE=fcitx5" >> ~/.xinitrc
-echo "export XMODIFIERS=@im=fcitx5" >> ~/.xinitrc
-echo "fcitx5 &" >> ~/.xinitrc
+# echo -en "\n\n\n\n" >> ~/.xinitrc
+# echo "# fcitx5" >> ~/.xinitrc
+# echo "export GTK_IM_MODULE=fictx5" >> ~/.xinitrc
+# echo "export QT_IM_MODULE=fcitx5" >> ~/.xinitrc
+# echo "export XMODIFIERS=@im=fcitx5" >> ~/.xinitrc
+# echo "fcitx5 &" >> ~/.xinitrc
