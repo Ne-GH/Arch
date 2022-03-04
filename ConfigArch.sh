@@ -1,9 +1,12 @@
 #!/usr/bin/bash
 
+YES(){
+    yes "y
+    "
+}
+YES | sudo pacman -Syu
 
-yes | sudo pacman -Syu
-
-yes | sudo pacman -S neovim
+YES | sudo pacman -S neovim
 
 # setfont
 # use command setfont to set font
@@ -14,18 +17,18 @@ yes | sudo pacman -S neovim
 # we can use commat inquire graphics information
 # lspci -k | grep -A 2 -E "(VGA|3D)"
 # my graphics is GTX 1660TI,so we will install "nvidia"
-yes | sudo pacman -S nvidia
+YES | sudo pacman -S nvidia
 
 # install X.Org
-yes | pacman -S xorg xorg-xinit xorg-server
+YES | pacman -S xorg xorg-xinit xorg-server
 # pacman -S xorg-xinit
 # pacman -S server
 
 # install pkgfile command
-yes | pacman -S pkgfile
+YES | pacman -S pkgfile
 
 # install firefox and Chinese package
-yes | sudo pacman -S firefox firefox-i18n-zh-cn
+YES | sudo pacman -S firefox firefox-i18n-zh-cn
 
 
 # install dwm
@@ -34,7 +37,7 @@ cd dwm
 sudo make clean install
 cd ..
 # install acpi to inquire power information
-yes | pacman -S acpi
+YES | pacman -S acpi
 
 # install st
 # should copy st source st
@@ -55,18 +58,18 @@ echo -e "xrandr --output Virtual-1 --mode \"1920x1080_60\"" >> ~/.xinitrc
 # echo -e "export LANGUAGE=zh_CN:en_US" >> ~/.xinitrc
 
 # install Chinese font
-yes | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
+YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
 # download path is /usr/share/fonts
 # maybe no need this command and I think this command is invalid  `sudo setfonts wqy_microhei.ttc`
 
 # install unzip
-yes | sudo pacman -S unzip
+YES | sudo pacman -S unzip
 
 # install git
-yes | sudo pacman -S git
+YES | sudo pacman -S git
 
 # install v2ray
-yes | sudo pacman -S v2ray
+YES | sudo pacman -S v2ray
 # install v2raya
 # in AUR Wiki inquire v2raya URL
 git clone https://aur.archlinux.org/v2raya-bin/git
@@ -90,7 +93,7 @@ cd ..
 # install fcitx5
 # pacman -S fcitx5-im
 # pacman -S fcitx5-chinese-addons
-yes | sudo pacman -S fcitx5-im fcitx5-chinese-addons
+YES | sudo pacman -S fcitx5-im fcitx5-chinese-addons
 # write this word in .xinitrc
 
 echo -en "\n\n\n\n" >> ~/.xinitrc
@@ -109,7 +112,7 @@ echo "fcitx5 &" >> ~/.xinitrc
 # fcitx5-configtool
 
 # install compton
-yes | sudo pacman -S compton
+YES | sudo pacman -S compton
 
 # Editor ~/.config/compton/compton.conf
 	# 其他窗口不透明度,较高时壁纸更清晰,
@@ -140,7 +143,7 @@ echo "# compton" >> ~/.xinitrc
 echo "compton -b &" >> ~/.xinitrc
 
 # install mplayer
-yes |sudo pacman -S mplayer
+YES |sudo pacman -S mplayer
 
 # install wallpaper player xwinwrap
 git clone https://aur.archlinux.org/xwinwrap-git.git
@@ -165,7 +168,7 @@ cd ..
 
 
 # install coc depend
-yes | sudo pacman -S nodejs npm 
+YES | sudo pacman -S nodejs npm 
 # use nvim command
 # install Coc-plug manager
 
@@ -174,10 +177,10 @@ yes | sudo pacman -S nodejs npm
 # CocInstall coc-sh
 
 # install coc-python depend
-yes | pacman S python-pylint jedi-language-server
+YES | pacman S python-pylint jedi-language-server
 # CocInstall coc-python
 # if write python file have errer,please try update coc coc-plug vim-plug
 
 
 # install stranstion
-yes | sudo pacman -S translate-shell
+YES | sudo pacman -S translate-shell
