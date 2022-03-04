@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
 YES(){
-    yes "y
-    "
+    yes "
+    y"
 }
 YES | sudo pacman -Syu
 
@@ -54,8 +54,8 @@ echo -e "xrandr --newmode \"1920x1080_60\" 173.00 1920 2048 2248 2576 1080 1083 
 echo -e "xrandr --addmode Virtual-1 \"1920x1080_60\"" >> ~/.xinitrc
 echo -e "xrandr --output Virtual-1 --mode \"1920x1080_60\"" >> ~/.xinitrc
 
-# echo -e "export LANG=zh_CN.utf-8" >> ~/.xinitrc
-# echo -e "export LANGUAGE=zh_CN:en_US" >> ~/.xinitrc
+echo -e "export LANG=zh_CN.utf-8" >> ~/.xinitrc
+echo -e "export LANGUAGE=zh_CN:en_US" >> ~/.xinitrc
 
 # install Chinese font
 YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
