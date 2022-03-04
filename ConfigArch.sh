@@ -1,32 +1,17 @@
 #!/usr/bin/bash
 
 YES(){
-    yes "
-    y"
+    yes ""
 }
 YES | sudo pacman -Syu
 
-YES | sudo pacman -S neovim
+# YES | sudo pacman -S neovim
 
 YES | sudo pacman -S nvidia
 
 YES | pacman -S xorg xorg-xinit xorg-server
 
 YES | pacman -S pkgfile
-
-# install dwm
-cd dwm
-sudo make clean install
-cd ..
-
-# install acpi to inquire power information
-YES | pacman -S acpi
-
-# install st
-cd st
-sudo make clean install
-cd ..
-
 
 # let terminal use Chinese
 # in .xinitrc add set
@@ -48,6 +33,18 @@ systemctl enable --now v2raya.service
 cd ..
 
 
+# install dwm
+cd dwm
+sudo make clean install
+cd ..
+
+# install acpi to inquire power information
+YES | pacman -S acpi
+
+# install st
+cd st
+sudo make clean install
+cd ..
 
 # install compton
 YES | sudo pacman -S compton
@@ -94,10 +91,10 @@ cd ..
 
 
 # install coc depend
-YES | sudo pacman -S nodejs npm 
+# YES | sudo pacman -S nodejs npm 
 
 # install coc-python depend
-YES | pacman S python-pylint jedi-language-server
+# YES | pacman S python-pylint jedi-language-server
 
 
 # use nvim command
