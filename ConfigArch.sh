@@ -40,29 +40,30 @@ write_xinitrc(){
 }
 
 write_compton(){
-echo     "# 其他窗口不透明度,较高时壁纸更清晰,"      > ~/.config/compton/compton.conf
-echo     "inactive-opacity = 0.95;"             >> ~/.config/compton/compton.conf
-echo     "# 当前聚焦窗口"                        >> ~/.config/compton/compton.conf
-echo     "active-opacity = 0.85;"               >> ~/.config/compton/compton.conf
+    mkdir -p ~/.config/compton
+    echo     "# 其他窗口不透明度,较高时壁纸更清晰,"      > ~/.config/compton/compton.conf
+    echo     "inactive-opacity = 0.95;"             >> ~/.config/compton/compton.conf
+    echo     "# 当前聚焦窗口"                        >> ~/.config/compton/compton.conf
+    echo     "active-opacity = 0.85;"               >> ~/.config/compton/compton.conf
 
-echo     "opacity-rule = ["                     >> ~/.config/compton/compton.conf
-echo     "#xprop"                               >> ~/.config/compton/compton.conf
-echo -en "\"79:name *?= 'nvim'&&focused\","     >> ~/.config/compton/compton.conf
-echo     "#nvim被使用"                          >> ~/.config/compton/compton.conf
-echo -en "\"49:name *?= 'nvim'&&!focused\","    >> ~/.config/compton/compton.conf
-echo     "#nvim未被使用"                         >> ~/.config/compton/compton.conf
-echo -en "\"99:class_g = 'firefox'&&focused\"," >> ~/.config/compton/compton.conf
-echo -en "\"99:class_g = 'firefox'&&!focused\",">> ~/.config/compton/compton.conf
-echo     "]"                                    >> ~/.config/compton/compton.conf
+    echo     "opacity-rule = ["                     >> ~/.config/compton/compton.conf
+    echo     "#xprop"                               >> ~/.config/compton/compton.conf
+    echo -en "\"79:name *?= 'nvim'&&focused\","     >> ~/.config/compton/compton.conf
+    echo     "#nvim被使用"                          >> ~/.config/compton/compton.conf
+    echo -en "\"49:name *?= 'nvim'&&!focused\","    >> ~/.config/compton/compton.conf
+    echo     "#nvim未被使用"                         >> ~/.config/compton/compton.conf
+    echo -en "\"99:class_g = 'firefox'&&focused\"," >> ~/.config/compton/compton.conf
+    echo -en "\"99:class_g = 'firefox'&&!focused\",">> ~/.config/compton/compton.conf
+    echo     "]"                                    >> ~/.config/compton/compton.conf
 
-echo     "fading = true;"                       >> ~/.config/compton/compton.conf
-echo     "fade-delta = 15;"                     >> ~/.config/compton/compton.conf
-echo     "fade-in-step = 0.05;"                 >> ~/.config/compton/compton.conf
-echo     "fade-out-step = 0.05;"                >> ~/.config/compton/compton.conf
-echo     "fade-exclude = [ ];"                  >> ~/.config/compton/compton.conf
+    echo     "fading = true;"                       >> ~/.config/compton/compton.conf
+    echo     "fade-delta = 15;"                     >> ~/.config/compton/compton.conf
+    echo     "fade-in-step = 0.05;"                 >> ~/.config/compton/compton.conf
+    echo     "fade-out-step = 0.05;"                >> ~/.config/compton/compton.conf
+    echo     "fade-exclude = [ ];"                  >> ~/.config/compton/compton.conf
 
-echo -en "refresh-rate = 0;"                    >> ~/.config/compton/compton.conf
-echo -en "vsunc = \"none\""                     >> ~/.config/compton/compton.conf
+    echo -en "refresh-rate = 0;"                    >> ~/.config/compton/compton.conf
+    echo -en "vsunc = \"none\""                     >> ~/.config/compton/compton.conf
 
 }
 
