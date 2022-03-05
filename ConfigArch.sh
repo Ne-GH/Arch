@@ -112,7 +112,7 @@ YES | sudo pacman -S v2ray
 git clone https://aur.archlinux.org/v2raya-bin.git
 cd v2raya-bin
 YES | makepkg -si
-systemctl enable --now v2raya.service
+sudo systemctl enable --now v2raya.service
 cd ..
 
 # install Chinese font
@@ -136,6 +136,9 @@ YES | sudo pacman -S nodejs npm
 
 # install coc-python depend
 YES | sudo pacman S python-pylint jedi-language-server
+
+# enable dhcpcd
+sudo systemctl enable dhcpcd
 
 write_xinitrc
 write_compton
