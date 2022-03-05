@@ -59,8 +59,6 @@ ChrootBehind(){
     # rootpass
     echo root:archroot | chpasswd
    
-    # enable dhcpcd
-    systemctl enable dhcpcd
     
     # BIOS/RBM
     yes | pacman -Sy grub
