@@ -14,7 +14,7 @@ ChrootFront(){
     read DISK
     DEVDISK="$DEVSTR$DISK"
 
-    echo -en "o\nn\n\n\n\n$EFIDISKSIZE\nn\n\n\n\n\nw\n" | sudo fdisk $DEVDISK
+    echo -en "o\nn\n\n\n\n$EFIDISKSIZE\nn\n\n\n\n\nw\n" | fdisk $DEVDISK
 
     yes | mkfs.fat -F 32 "$DEVDISK$ONE"
     yes | mkfs.ext4 "$DEVDISK$TWO"
