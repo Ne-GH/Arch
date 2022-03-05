@@ -8,6 +8,8 @@ EFIDISKSIZE="+128M"
 
 
 ChrootFront(){
+    # Update Time
+    timedatectl set-ntp true
     
     lsblk
     echo -en "Please input your disk number (such as : sda)"
