@@ -8,8 +8,7 @@ EFIDISKSIZE="+128M"
 
 
 ChrootFront(){
-    # Update Time
-    timedatectl set-ntp true
+
     
     lsblk
     echo -en "Please input your disk number (such as : sda)"
@@ -48,7 +47,8 @@ ChrootBehind(){
     echo "zh_CN GB2312" >> /etc/locale.gen
     locale-gen
     
-    
+    # Update Time
+    timedatectl set-ntp true
     
     # locale time
     rm -f /etc/localtime
