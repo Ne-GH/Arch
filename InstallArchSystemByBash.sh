@@ -28,8 +28,7 @@ ChrootFront(){
     mount "$DEVDISK$ONE" /mnt/boot/efi
 
     yes | pacman -Sy archlinux-keyring
-    echo -en "\n\n\n\n\n\n\n\n\n\n\n" | pacstrap -i /mnt base base-devel linux linux-firmware dhcpcd
-
+    echo -en "\n\n\n\n\n\n\n\n\n\n\n" | pacstrap -i /mnt base base-devel linux linux-firmware dhcpcd netctl dialog wpa_supplicant networkmanager
     genfstab -U -p /mnt > /mnt/etc/fstab
     
     cp install.sh /mnt
