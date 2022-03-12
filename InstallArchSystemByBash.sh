@@ -5,12 +5,18 @@ DISK="sda"
 DEVSTR="/dev/"
 DEVDISK="/dev/sda"
 EFIDISKSIZE="+128M"
+USERNAME="yongheng"
+USERPASS="lan"
+ROOTPASS="arch"
+YES(){
+	yes ""
+}
 
 
 ChrootFront(){
 
     # Update Time
-    timedatectl set-ntp true
+    # timedatectl set-ntp true
     
     lsblk
     echo -en "Please input your disk number (such as : sda)"
@@ -19,15 +25,15 @@ ChrootFront(){
 
     echo -en "o\nn\n\n\n\n$EFIDISKSIZE\nn\n\n\n\n\nw\n" | fdisk $DEVDISK
 
-    yes | mkfs.fat -F 32 "$DEVDISK$ONE"
-    yes | mkfs.ext4 "$DEVDISK$TWO"
+    YES | mkfs.fat -F 32 "$DEVDISK$ONE"
+    YES | mkfs.ext4 "$DEVDISK$TWO"
 
    
     mount "$DEVDISK$TWO" /mnt
     mkdir -p /mnt/boot/efi
     mount "$DEVDISK$ONE" /mnt/boot/efi
 
-    yes | pacman -Sy archlinux-keyring
+    YES | pacman -Sy archlinux-keyring
     echo -en "\n\n\n\n\n\n\n\n\n\n\n" | pacstrap -i /mnt base base-devel linux linux-firmware dhcpcd netctl dialog wpa_supplicant networkmanager
     genfstab -U -p /mnt > /mnt/etc/fstab
     
@@ -60,24 +66,24 @@ ChrootBehind(){
     
     
     # rootpass
-    echo "root:archroot" | chpasswd
+    echo "root:$ROOTPASS" | chpasswd
 
     # enable dhcpcd
-    systemctl enbale dhcpcd
+    # systemctl enbale dhcpcd
    
     # BIOS/RBM
-    yes | pacman -Sy grub
-    grub-install --target=i386-pc $DEVDISK
-    grub-mkconfig -o /boot/grub/grub.cfg
+    # YES | pacman -Sy grub
+    # grub-install --target=i386-pc $DEVDISK
+    # grub-mkconfig -o /boot/grub/grub.cfg
     
     # EFI/GPT
-    # yes | pacman -S grub efibootmgr
-    # grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-    # grub-mkconfig -o /boot/grub/grub.cfg
+    YES | pacman -S grub efibootmgr
+    grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+    grub-mkconfig -o /boot/grub/grub.cfg
 
-    useradd -m arch
-    echo "arch:pass" | chpasswd
-    echo "arch ALL=(ALL) ALL" >> /etc/sudoers
+    useradd -m $USERNAME
+    echo "$USERNAME:$USERPASS" | chpasswd
+    echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
     exit
     
 }
@@ -93,7 +99,7 @@ fi
 #
     # read ConfirmStart
     # case "$ConfirmStart" in
-        # Y|y|YES|Yes|yes)
+        # Y|y|YES|Yes|YES)
             # STARTINSTALL ;;
         # *)
             # NOSTART ;;
