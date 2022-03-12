@@ -72,7 +72,7 @@ YES | sudo pacman -Syy
 
 YES | sudo pacman -S neovim
 
-YES | sudo pacman -S nvidia
+YES | sudo pacman -S xf86-video-nouveau
 
 YES | sudo pacman -S xorg xorg-xinit xorg-server
 
@@ -135,10 +135,22 @@ YES | sudo pacman -S translate-shell
 YES | sudo pacman -S nodejs npm 
 
 # install coc-python depend
-YES | sudo pacman S python-pylint jedi-language-server
+YES | sudo pacman -S python-pylint jedi-language-server
+
+# install alsa-utils
+YES | sudo pacman -S alsa-utils
+
+# auto time
+sudo timedatectl set-timezone Asia/Shanghai
+sudo timedatectl set-ntp true
+
+# let your user can to reboot/shutdown
+sudo chmod u+s /sbin/reboot
+sudo chmod u+s /sbin/shutdown
 
 # enable dhcpcd
-sudo systemctl enable dhcpcd
+# sudo systemctl enable dhcpcd
+
 
 write_xinitrc
 write_compton
