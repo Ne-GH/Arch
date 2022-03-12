@@ -134,6 +134,7 @@ YES | sudo pacman -S translate-shell
 
 # install coc depend
 YES | sudo pacman -S nodejs npm 
+YES | sudo pacman -S clang
 
 # install coc-python depend
 YES | sudo pacman -S python-pylint jedi-language-server
