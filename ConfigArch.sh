@@ -120,6 +120,7 @@ YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
 
 # install fcitx5
 YES | sudo pacman -S fcitx5-im fcitx5-chinese-addons
+YES | sudo pacman -S fcitx5-nord
 
 # install firefox and Chinese package
 YES | sudo pacman -S firefox firefox-i18n-zh-cn
@@ -133,6 +134,7 @@ YES | sudo pacman -S translate-shell
 
 # install coc depend
 YES | sudo pacman -S nodejs npm 
+YES | sudo pacman -S clang
 
 # install coc-python depend
 YES | sudo pacman -S python-pylint jedi-language-server
