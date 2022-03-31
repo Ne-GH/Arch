@@ -70,9 +70,9 @@ write_compton(){
 
 YES | sudo pacman -Syy
 
-YES | sudo pacman -S neovim
+YES | sudo pacman -S neovim xsel
 
-YES | sudo pacman -S xf86-video-nouveau
+YES | sudo pacman -S nvidia
 
 YES | sudo pacman -S xorg xorg-xinit xorg-server
 
@@ -140,6 +140,8 @@ YES | sudo pacman -S python-pylint jedi-language-server
 # install alsa-utils
 YES | sudo pacman -S alsa-utils
 
+# install man-pages-zh_cn
+YES | sudo pacman -S man-pages-zh_cn
 # auto time
 sudo timedatectl set-timezone Asia/Shanghai
 sudo timedatectl set-ntp true
