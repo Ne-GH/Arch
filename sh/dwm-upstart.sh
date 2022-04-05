@@ -93,6 +93,14 @@ fi
 
 Fnums=$(cat ./D.txt)
 
+
+# DiSK
+DISKREAD=$(iostat sda | awk 'NR==7 { print $3 }')
+DISKWRITE=$(iostat sda | awk 'NR==7 { print $4 }')
+
+DISKREAD=$(echo "scale=2;$DISKREAD/10"|bc)
+DISKWRITE=$(echo "scale=2;$DISKWRITE/10"|bc)
+
 LOCALTIME=$(date +'Time:%m/%d %H:%M:%S')
 IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you use vmware
 BAT="$( acpi -b | awk '{ print $4 }' | tr -d ',' )"
@@ -102,10 +110,11 @@ if acpi -a | grep off-line > /dev/null
 then
 # 如果没插上电源则显示电池图标
 #xsetroot -name " D:$RX U:$TX Cpu:$CPU_USAGE% Hdd:$HDDFREE Mem:$MEMFREE Ip:$IP -$BAT $LOCALTIME"
-xsetroot -name "$Fnums D:$RX U:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP 🎟 [$BAT] $LOCALTIME"
+xsetroot -name "RD:$DISKREAD WD:$DISKWRITE $Fnums D:$RX U:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP +[$BAT] $LOCALTIME"
 else
 # 否则如果插上了电源则显示电线图标
 #xsetroot -name " D:$RX U:$TX Cpu:$CPU_USAGE% Hdd:$HDDFREE Mem:$MEMFREE Ip:$IP +$BAT $LOCALTIME"
+# 
+xsetroot -name "RD:"$DISKREAD"MB/s WD:"$DISKWRITE"MB/s $Fnums ⬇:$RX ⬆:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP ♈[$BAT] $LOCALTIME"
 
-xsetroot -name "$Fnums ⬇:$RX ⬆:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP ♈[$BAT] $LOCALTIME"
 fi
