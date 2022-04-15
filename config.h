@@ -72,15 +72,17 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 /*static const char *dmenucmd[] = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };*/
 static const char *dmenucmd[] = { "dmenu_run", "-b", "-fn", dmenufont, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *comptoncmd1[]  = { "killall", "compton", NULL };
+static const char *comptoncmd1[]  = { "killall", "compton", NULL }; // kill compton ,so will kill background
+
+// static const char *comptoncmd2[] = { "if","ps","-A|","grep","compton",";then","killall","compton",";else","compton","-b",";fi",NULL };  // kill compton ,so will kill background<]
 static const char *comptoncmd2[]  = { "compton", "-b", NULL };
-static const char *comptoncmd3[]  = { "firefox", NULL };
+static const char *firefox[]  = { "firefox", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x24", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x30", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_g,      spawn,          {.v = comptoncmd3 } },
+	{ MODKEY,                       XK_g,      spawn,          {.v = firefox } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
