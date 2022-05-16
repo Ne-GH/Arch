@@ -29,8 +29,9 @@ write_xinitrc(){
     
     echo -en "\n\n\n\n" >> ~/.xinitrc
     echo "# xwinwrap"   >> ~/.xinitrc
+    echo "xwinwrap -fs -nf -ov -- mpv --wid=%WID --fps=59 --no-audio --loop --no-osc --no-osd-bar --input-vo-keyboard=no --really-quiet ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
     echo "# xwinwrap -fs -nf -ov -- mplayer -af volume=-200 -fps 24 -shuffle -loop 0 -wid WID -nolirc ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
-    echo "xwinwrap -fs -nf -ov -- mpv -wid WID --fps=59 --no-audio --loop --no-osc --no-osd-bar --input-vo-keyboard=no --really-quiet ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
+    echo "# xwinwrap -fs -nf -ov -- mpv -wid WID --fps=59 --no-audio --loop --no-osc --no-osd-bar --input-vo-keyboard=no --really-quiet ~/.wallpaper/bg.mp4 &" >> ~/.xinitrc
     
 
 
