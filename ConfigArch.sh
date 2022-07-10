@@ -156,6 +156,10 @@ sudo chmod u+s /sbin/shutdown
 # enable dhcpcd
 # sudo systemctl enable dhcpcd
 
+# enable vmware share file
+YES | sudo pacman -S open-vm-tools
+mkdir ~/.share
+sudo /bin/sh -c 'echo ".host:Arch /home/yongheng/.share fuse.vmhgfs-fuse defaults,allow_other 0 0" >> /etc/fstab'
 
 write_xinitrc
 write_compton
