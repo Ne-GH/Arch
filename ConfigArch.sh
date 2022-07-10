@@ -161,6 +161,10 @@ YES | sudo pacman -S open-vm-tools
 mkdir ~/.share
 sudo /bin/sh -c 'echo ".host:Arch /home/yongheng/.share fuse.vmhgfs-fuse defaults,allow_other 0 0" >> /etc/fstab'
 
+# dwm sh DiskRead and DishWrite
+YES | sudo pacman -S bc sysstat
+
+
 write_xinitrc
 write_compton
 
