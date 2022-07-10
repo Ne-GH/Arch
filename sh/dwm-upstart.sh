@@ -91,7 +91,6 @@ else
 TX=$(echo $TX | awk '{printf "%.2fKB/s",$1/1024}')
 fi
 
-Fnums=$(cat ./D.txt)
 
 
 # DiSK
@@ -113,8 +112,6 @@ then
 xsetroot -name "RD:$DISKREAD WD:$DISKWRITE $Fnums D:$RX U:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP +[$BAT] $LOCALTIME"
 else
 # 否则如果插上了电源则显示电线图标
-#xsetroot -name " D:$RX U:$TX Cpu:$CPU_USAGE% Hdd:$HDDFREE Mem:$MEMFREE Ip:$IP +$BAT $LOCALTIME"
-# 
-xsetroot -name "RD:"$DISKREAD"MB/s WD:"$DISKWRITE"MB/s $Fnums ⬇:$RX ⬆:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP ♈[$BAT] $LOCALTIME"
+xsetroot -name "RD:"$DISKREAD"MB/s WD:"$DISKWRITE"MB/s ⬇:$RX ⬆:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP ♈[$BAT] $LOCALTIME"
 
 fi

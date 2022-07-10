@@ -79,7 +79,7 @@ static const char *comptoncmd2[]  = { "compton", "-b", NULL };
 static const char *firefox[]  = { "firefox", NULL };
 static const char scratchpadname[] = "scratchpad";
                                                                         //宽  高
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "110x30", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "115x30", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
