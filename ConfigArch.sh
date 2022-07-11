@@ -165,6 +165,11 @@ sudo /bin/sh -c 'echo ".host:Arch /home/yongheng/.share fuse.vmhgfs-fuse default
 YES | sudo pacman -S bc sysstat
 
 
+# Clion 
+echo "export _JAVA_AWT_WM_NONREPARENTING=1" >> .bashrc
+
+
+
 write_xinitrc
 write_compton
 
