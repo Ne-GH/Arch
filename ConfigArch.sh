@@ -120,6 +120,7 @@ cd ..
 YES | sudo pacman -S noto-fonts noto-fonts-cjk noto-fonts-emoji
 
 # install fcitx5
+# /usr/share/fcitx/data/punc.mb.zh_CN
 YES | sudo pacman -S fcitx5-im fcitx5-chinese-addons
 YES | sudo pacman -S fcitx5-nord
 
