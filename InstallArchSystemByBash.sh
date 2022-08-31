@@ -37,8 +37,8 @@ ChrootFront(){
     echo -en "\n\n\n\n\n\n\n\n\n\n\n" | pacstrap -i /mnt base base-devel linux linux-firmware dhcpcd netctl dialog wpa_supplicant networkmanager
     genfstab -U -p /mnt > /mnt/etc/fstab
     
-    cp install.sh /mnt
-    arch-chroot /mnt bash install.sh ChrootBehind
+    cp InstallArchSystemByBash.sh /mnt
+    arch-chroot /mnt bash InstallArchSystemByBash.sh ChrootBehind
 
 
     umount /mnt/boot/efi
@@ -72,14 +72,14 @@ ChrootBehind(){
     # systemctl enbale dhcpcd
    
     # BIOS/RBM
-    # YES | pacman -Sy grub
-    # grub-install --target=i386-pc $DEVDISK
-    # grub-mkconfig -o /boot/grub/grub.cfg
+    YES | pacman -Sy grub
+    grub-install --target=i386-pc $DEVDISK
+    grub-mkconfig -o /boot/grub/grub.cfg
     
     # EFI/GPT
-    YES | pacman -S grub efibootmgr
-    grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
-    grub-mkconfig -o /boot/grub/grub.cfg
+    # YES | pacman -S grub efibootmgr
+    # grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux
+    # grub-mkconfig -o /boot/grub/grub.cfg
 
     useradd -m $USERNAME
     echo "$USERNAME:$USERPASS" | chpasswd
