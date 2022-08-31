@@ -65,18 +65,19 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /*static const char *dmenucmd[] = { "dmenu_run", "-c", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };*/
 static const char *dmenucmd[] = { "dmenu_run", "-b", "-fn", dmenufont, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *comptoncmd1[]  = { "killall", "compton", NULL }; // kill compton ,so will kill background
+static const char *comptoncmd1[]  = { "killall","compton", NULL }; // kill compton ,so will kill background
 
 // static const char *comptoncmd2[] = { "if","ps","-A|","grep","compton",";then","killall","compton",";else","compton","-b",";fi",NULL };  // kill compton ,so will kill background<]
 static const char *comptoncmd2[]  = { "compton", "-b", NULL };
 static const char *firefox[]  = { "firefox", NULL };
+static const char *clion[] = { "clion", NULL };
 static const char scratchpadname[] = "scratchpad";
                                                                         //宽  高
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "115x30", NULL };
@@ -84,6 +85,7 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "115x30
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_g,      spawn,          {.v = firefox } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = clion } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },

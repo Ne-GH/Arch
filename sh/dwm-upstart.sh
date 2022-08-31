@@ -97,8 +97,11 @@ fi
 DISKREAD=$(iostat sda | awk 'NR==7 { print $3 }')
 DISKWRITE=$(iostat sda | awk 'NR==7 { print $4 }')
 
-DISKREAD=$(echo "scale=2;$DISKREAD/10"|bc)
-DISKWRITE=$(echo "scale=2;$DISKWRITE/10"|bc)
+DISKREAD=$(echo "$DISKREAD/1024"|bc)
+DISKWRITE=$(echo "$DISKWRITE/1024"|bc)
+# DISKREAD=$(echo "scale=2;$DISKREAD/10"|bc)
+# DISKWRITE=$(echo "scale=2;$DISKWRITE/10"|bc)
+SOUND=$(amixer get Master | grep -o "\\[[0-9]\{1,3\}%\\]" | grep -o "[0-9]\{1,3\}")
 
 LOCALTIME=$(date +'Time:%m/%d %H:%M:%S')
 IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you use vmware
@@ -112,6 +115,6 @@ then
 xsetroot -name "RD:$DISKREAD WD:$DISKWRITE $Fnums D:$RX U:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP +[$BAT] $LOCALTIME"
 else
 # 否则如果插上了电源则显示电线图标
-xsetroot -name "RD:"$DISKREAD"MB/s WD:"$DISKWRITE"MB/s ⬇:$RX ⬆:$TX Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP ♈[$BAT] $LOCALTIME"
+xsetroot -name "RD:"$DISKREAD"MB/s WD:"$DISKWRITE"MB/s ⬇:$RX ⬆:$TX S:$SOUND% Cpu:$CPU_USAGE% Mem:$MEMFREE Ip:$IP ♈[$BAT] $LOCALTIME"
 
 fi
