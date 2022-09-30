@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 2;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 2;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappoh    = 0;        /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 0;        /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
@@ -32,7 +32,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+static const char *tags[] = { "☯", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -52,7 +52,7 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "Tile",      tile },    /* first entry is default */
-	{ "><>",      monocle },   /*NULL*/ /* no layout function means floating behavior */
+	// { "><>",      monocle },   [>NULL*/ /* no layout function means floating behavior <]
 	{ "[M]",      monocle },/*monocle*/
 };
 
@@ -77,15 +77,21 @@ static const char *comptoncmd1[]  = { "killall","compton", NULL }; // kill compt
 // static const char *comptoncmd2[] = { "if","ps","-A|","grep","compton",";then","killall","compton",";else","compton","-b",";fi",NULL };  // kill compton ,so will kill background<]
 static const char *comptoncmd2[]  = { "compton", "-b", NULL };
 static const char *firefox[]  = { "firefox", NULL };
-static const char *clion[] = { "clion", NULL };
+// static const char *clionx[] = {"nohup","clion",">/dev/null","2>&1","&",NULL};
+// static const char *clion[] = { "/home/yongheng/StartClion", NULL };
+static const char *clion[] = {"/home/yongheng/Projects/Tools/StartClion.sh",NULL};
 static const char scratchpadname[] = "scratchpad";
+static const char *SoundUp[] = {"/home/yongheng/Projects/Tools/Sound/SoundUp.sh",NULL};
+static const char *SoundDown[] = {"/home/yongheng/Projects/Tools/Sound/SoundDown.sh",NULL};
                                                                         //宽  高
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "115x30", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_g,      spawn,          {.v = firefox } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = clion } },
+	{ MODKEY,                       XK_g,      spawn,          {.v = firefox } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = SoundDown } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = SoundUp } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
