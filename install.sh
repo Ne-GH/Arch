@@ -3,6 +3,7 @@
 #############################
 # pacman -S konsole 
 pacman -S fish
+set -U fish_greeting ""
 pacman -S neovim 
 pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-nord
 pacman -S firefox firefox-i18n-zh-cn
