@@ -39,3 +39,4 @@ pacman -S maim
 # yay -S icalingua++
 # yay -S optimus-manager optimus-manager-qt
 # yay -S xournalpp
+# yay -S neovim-symlinks
