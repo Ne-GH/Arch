@@ -15,7 +15,7 @@ pacman -S dolphin
 pacman -S qtcreator qt6-base
 pacman -S pycharm-community-edition
 pacman -S boost boost-libs
-
+pacman -S xournalpp
 # pacman -S xclip
 # maim -s | xclip -selection clipboard -t image/png
 pacman -S maim
@@ -38,5 +38,4 @@ pacman -S maim
 # yay -S v2raya-bin
 # yay -S icalingua++
 # yay -S optimus-manager optimus-manager-qt
-# yay -S xournalpp
 # yay -S neovim-symlinks
