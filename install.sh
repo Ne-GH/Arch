@@ -2,23 +2,23 @@
 # pacman
 #############################
 # pacman -S konsole 
-pacman -S fish
+sudo pacman -S fish
 set -U fish_greeting ""
-pacman -S neovim 
-pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-nord
-pacman -S firefox firefox-i18n-zh-cn
-pacman -S noto-fonts noto-fonts-cjk  noto-fonts-emoji
-pacman -S ntfs-3g
-pacman -S git
-pacman -S v2ray
-pacman -S dolphin
-pacman -S qtcreator qt6-base
-pacman -S pycharm-community-edition
-pacman -S boost boost-libs
-pacman -S xournalpp
+sudo pacman -S neovim 
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-nord
+sudo pacman -S firefox firefox-i18n-zh-cn
+sudo pacman -S noto-fonts noto-fonts-cjk  noto-fonts-emoji
+sudo pacman -S ntfs-3g
+sudo pacman -S git
+sudo pacman -S v2ray
+sudo pacman -S dolphin
+sudo pacman -S qtcreator qt6-base
+sudo pacman -S pycharm-community-edition
+sudo pacman -S boost boost-libs
+sudo pacman -S xournalpp
 # pacman -S xclip
 # maim -s | xclip -selection clipboard -t image/png
-pacman -S maim
+sudo pacman -S maim
 
 # git clone https://aur.archlinux.org/yay-bin.git
 
