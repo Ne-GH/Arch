@@ -96,7 +96,7 @@ sudo make clean install
 cd ..
 
 # install compton
-YES | sudo pacman -S compton
+YES | sudo pacman -S picom
 
 
 # install mplayer / mpv
